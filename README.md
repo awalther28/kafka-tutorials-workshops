@@ -54,10 +54,25 @@ schema.registry.url=https://<SR ENDPOINT>
 ```
 
 #### Working with nested JSON
-Kafka-tutorial link: https://kafka-tutorials.confluent.io/working-with-nested-json/ksql.html
+Kafka-tutorial link: https://kafka-tutorials.confluent.io/working-with-nested-json/ksql.html#problem-description
 
-Because we setup our Kafka cluster and ksqlDB application in CCloud, we can skip to 3 in the project.
+Because we setup our Kafka cluster and ksqlDB application in CCloud, we will need to deviate from the instructions a little bit:
 
+- Instead of using the ksqlDB cli, we can use the ksqlDB editor in CCloud
+- Instead of using the kafka-console-producer, we can use `ccloud kafka topic produce financial_txns`
+- Use teh "add properties" button in the ksqlDB editor to set the auto.offset.reset policy to 'earliest'
+- Use "ksqlDB" and "Data Flow" section of the CCloud UI to see data 
+
+
+#### Working with hetergeneous JSON
+Kafka-tutorial link: https://kafka-tutorials.confluent.io/working-with-nested-json/ksql.html#problem-description
+
+Because we setup our Kafka cluster and ksqlDB application in CCloud, we will need to deviate from the instructions a little bit:
+
+- Instead of using the ksqlDB cli, we can use the ksqlDB editor in CCloud
+- Instead of using the kafka-console-producer, we can use `ccloud kafka topic produce source_data`
+- Use teh "add properties" button in the ksqlDB editor to set the auto.offset.reset policy to 'earliest'
+- Use "ksqlDB" and "Data Flow" section of the CCloud UI to see data 
 
 
 ####  Clean Up
@@ -70,8 +85,3 @@ First clean up the `ccloud-stack`:
 ccloud::destroy_ccloud_stack $SERVICE_ACCOUNT_ID
 ```
 
-Then shut down the connect docker container:
-
-```
-docker-compose down
-```
