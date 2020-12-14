@@ -38,6 +38,8 @@ schema.registry.basic.auth.user.info=<SR API KEY>:<SR API SECRET>
 schema.registry.url=https://<SR ENDPOINT>
 ```
 
+TODO: add something about ``` ccloud kafka acl create --allow --service-account 154403 --operation READ --operation WRITE --operation CREATE --topic '*'```
+
 ## Working with nested JSON
 Kafka-tutorial link: https://kafka-tutorials.confluent.io/working-with-nested-json/ksql.html#problem-description
 
