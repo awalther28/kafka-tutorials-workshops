@@ -4,13 +4,12 @@ Code supporting meetup workshops based on [Kafka Tutorials](https://kafka-tutori
 
 ##  Provision a new ccloud-stack on Confluent Cloud
 
-This part assumes you have already set-up an account on [Confluent CLoud](https://confluent.cloud/) and you've installed the [Confluent Cloud CLI](https://docs.confluent.io/ccloud-cli/current/install.html). We're going to use the `ccloud-stack` utility to get everything set-up to work along with the workshop.  
-
-Clone https://github.com/confluentinc/examples.
+This part assumes you have already set-up an account on [Confluent CLoud](https://confluent.cloud/) and you've installed the [Confluent Cloud CLI](https://docs.confluent.io/ccloud-cli/current/install.html). We're going to use the `ccloud-stack` utility to get everything set-up to work along with the workshop. 
 
 Run:
 ```
-cd ccloud/ccloud-stack
+git clone git@github.com:confluentinc/examples.git
+cd examples/ccloud/ccloud-stack
 ./ccloud-stack.sh
 # type 'y' for both questions
 ```
@@ -51,7 +50,7 @@ Because we setup our Kafka cluster and ksqlDB application in CCloud, we will nee
 
 
 ## Working with hetergeneous JSON
-Kafka-tutorial link: https://kafka-tutorials.confluent.io/working-with-nested-json/ksql.html#problem-description
+Kafka-tutorial link: https://kafka-tutorials.confluent.io/working-with-json-different-structure/ksql.html#problem-description
 
 Because we setup our Kafka cluster and ksqlDB application in CCloud, we will need to deviate from the instructions a little bit:
 
@@ -63,11 +62,11 @@ Because we setup our Kafka cluster and ksqlDB application in CCloud, we will nee
 
 ##  Clean Up
 
-If you haven't done so already, now is a good time to shut down all the resources we've created and started.  Because your Confluent Cloud cluster is using real cloud resources and is billable, delete the connector and clean up your Confluent Cloud environment when you complete this tutorial. You can use Confluent Cloud CLI or Confluent UI, but for this tutorial you can use the ccloud_library.sh library again. Pass in the `SERVICE_ACCOUNT_ID` that was generated when the `ccloud-stack was` created.
+If you haven't done so already, now is a good time to shut down all the resources we've created and started.  Because your Confluent Cloud cluster is using real cloud resources and is billable, delete the connector and clean up your Confluent Cloud environment when you complete this tutorial. You can use Confluent Cloud CLI or Confluent UI, but for this tutorial you can use the ccloud_library.sh library again. Pass in the `SERVICE_ACCOUNT_ID` that was generated when the `ccloud-stack` was created.
 
-First clean up the `ccloud-stack`:
+Run:
 
 ```
-ccloud::destroy_ccloud_stack $SERVICE_ACCOUNT_ID
+./ccloud_stack_destroy.sh stack-configs/<config file>
 ```
 
