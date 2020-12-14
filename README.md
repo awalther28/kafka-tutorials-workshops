@@ -21,26 +21,19 @@ Once completed, you need to allow the ksqlDB app's service account access to cre
 
 2. Run ```ccloud kafka acl create --allow --service-account <service-account-ID> --operation READ --operation WRITE --operation CREATE --topic '*'```
 
-## Working with nested JSON
+## Kafka-Tutorials on CCloud
+Because we setup our Kafka cluster and ksqlDB application in CCloud, we will need to deviate from the instructions a little bit:
+
+- Instead of using the ksqlDB cli, we can use the ksqlDB editor in CCloud
+- Instead of using the kafka-console-producer, we can use `ccloud kafka topic produce <topic>`
+- Use the "add properties" button in the ksqlDB editor to set the auto.offset.reset policy to 'earliest'
+- Use "ksqlDB" and "Data Flow" section of the CCloud UI to see data 
+
+### Working with nested JSON
 Kafka-tutorial link: https://kafka-tutorials.confluent.io/working-with-nested-json/ksql.html#problem-description
 
-Because we setup our Kafka cluster and ksqlDB application in CCloud, we will need to deviate from the instructions a little bit:
-
-- Instead of using the ksqlDB cli, we can use the ksqlDB editor in CCloud
-- Instead of using the kafka-console-producer, we can use `ccloud kafka topic produce financial_txns`
-- Use the "add properties" button in the ksqlDB editor to set the auto.offset.reset policy to 'earliest'
-- Use "ksqlDB" and "Data Flow" section of the CCloud UI to see data 
-
-
-## Working with hetergeneous JSON
+### Working with hetergeneous JSON
 Kafka-tutorial link: https://kafka-tutorials.confluent.io/working-with-json-different-structure/ksql.html#problem-description
-
-Because we setup our Kafka cluster and ksqlDB application in CCloud, we will need to deviate from the instructions a little bit:
-
-- Instead of using the ksqlDB cli, we can use the ksqlDB editor in CCloud
-- Instead of using the kafka-console-producer, we can use `ccloud kafka topic produce source_data`
-- Use the "add properties" button in the ksqlDB editor to set the auto.offset.reset policy to 'earliest'
-- Use "ksqlDB" and "Data Flow" section of the CCloud UI to see data 
 
 
 ##  Clean Up
