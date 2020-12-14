@@ -13,21 +13,14 @@ This workshop is based on the [scheduling operations](https://kafka-tutorials.co
 
 This part assumes you have already set-up an account on [Confluent CLoud](https://confluent.cloud/) and you've installed the [Confluent Cloud CLI](https://docs.confluent.io/ccloud-cli/current/install.html). We're going to use the `ccloud-stack` utility to get everything set-up to work along with the workshop.  
 
-A copy of the [ccloud_library.sh](https://github.com/confluentinc/examples/blob/latest/utils/ccloud_library.sh) is included in this repo and let's run this command now:
+Clone https://github.com/confluentinc/examples.
 
+Run:
 ```
-source ./ccloud_library.sh
+cd ccloud/ccloud-stack
+./ccloud-stack.sh
+# type 'y' for both questions
 ```
-
-Then let's create the stack of Confluent Cloud resources:
-
-```
-CLUSTER_CLOUD=aws
-CLUSTER_REGION=us-west-2
-ccloud::create_ccloud_stack
-```
-
-NOTE: Make sure you destroy all resources when the workshop concludes.
 
 The `create` command generates a local config file, `java-service-account-NNNNN.config` when it completes. The `NNNNN` represents the service account id.  Take a quick look at the file:
 
