@@ -4,41 +4,22 @@ Code supporting meetup workshops based on [Kafka Tutorials](https://kafka-tutori
 
 ##  Provision a new ccloud-stack on Confluent Cloud
 
-This part assumes you have already set-up an account on [Confluent CLoud](https://confluent.cloud/) and you've installed the [Confluent Cloud CLI](https://docs.confluent.io/ccloud-cli/current/install.html). We're going to use the `ccloud-stack` utility to get everything set-up to work along with the workshop. 
+This part assumes you have already set-up an account on [Confluent Cloud](https://confluent.cloud/) and you've installed the [Confluent Cloud CLI](https://docs.confluent.io/ccloud-cli/current/install.html). We're going to use the `ccloud-stack` utility to get everything set-up to work along with the workshop. 
 
-Run:
+Run (note this will take up to 12 minutes!):
 ```
 git clone git@github.com:confluentinc/examples.git
 cd examples/ccloud/ccloud-stack
 ./ccloud-stack.sh
 # type 'y' for both questions
 ```
+Once completed, you need to allow the ksqlDB app's service account access to create, read, and write to all topics.
 
-The `create` command generates a local config file, `java-service-account-NNNNN.config` when it completes. The `NNNNN` represents the service account id.  Take a quick look at the file:
+1. Locate the ksqlDB application service account ID:
 
-```
-cat stack-configs/java-service-account-*.config
-```
+![ccloud-ksqlDBapp-settings-service-account-id](https://github.com/awalther28/kafka-tutorials-workshops/image.jpg?raw=true)
 
-You should see something like this:
-
-```
-# ENVIRONMENT ID: <ENVIRONMENT ID>
-# SERVICE ACCOUNT ID: <SERVICE ACCOUNT ID>
-# KAFKA CLUSTER ID: <KAFKA CLUSTER ID>
-# SCHEMA REGISTRY CLUSTER ID: <SCHEMA REGISTRY CLUSTER ID>
-# ------------------------------
-ssl.endpoint.identification.algorithm=https
-security.protocol=SASL_SSL
-sasl.mechanism=PLAIN
-bootstrap.servers=<BROKER ENDPOINT>
-sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="<API KEY>" password="<API SECRET>";
-basic.auth.credentials.source=USER_INFO
-schema.registry.basic.auth.user.info=<SR API KEY>:<SR API SECRET>
-schema.registry.url=https://<SR ENDPOINT>
-```
-
-TODO: add something about ``` ccloud kafka acl create --allow --service-account 154403 --operation READ --operation WRITE --operation CREATE --topic '*'```
+2. Run ```ccloud kafka acl create --allow --service-account <service-account-ID> --operation READ --operation WRITE --operation CREATE --topic '*'```
 
 ## Working with nested JSON
 Kafka-tutorial link: https://kafka-tutorials.confluent.io/working-with-nested-json/ksql.html#problem-description
@@ -47,7 +28,7 @@ Because we setup our Kafka cluster and ksqlDB application in CCloud, we will nee
 
 - Instead of using the ksqlDB cli, we can use the ksqlDB editor in CCloud
 - Instead of using the kafka-console-producer, we can use `ccloud kafka topic produce financial_txns`
-- Use teh "add properties" button in the ksqlDB editor to set the auto.offset.reset policy to 'earliest'
+- Use the "add properties" button in the ksqlDB editor to set the auto.offset.reset policy to 'earliest'
 - Use "ksqlDB" and "Data Flow" section of the CCloud UI to see data 
 
 
@@ -58,7 +39,7 @@ Because we setup our Kafka cluster and ksqlDB application in CCloud, we will nee
 
 - Instead of using the ksqlDB cli, we can use the ksqlDB editor in CCloud
 - Instead of using the kafka-console-producer, we can use `ccloud kafka topic produce source_data`
-- Use teh "add properties" button in the ksqlDB editor to set the auto.offset.reset policy to 'earliest'
+- Use the "add properties" button in the ksqlDB editor to set the auto.offset.reset policy to 'earliest'
 - Use "ksqlDB" and "Data Flow" section of the CCloud UI to see data 
 
 
