@@ -17,7 +17,7 @@ Once completed, you need to allow the ksqlDB app's service account access to cre
 
 1. Locate the ksqlDB application service account ID:
 
-![ccloud-ksqlDBapp-settings-service-account-id](https://github.com/awalther28/kafka-tutorials-workshops/images/ksqlDBserviceAccount.jpg?raw=true)
+![ccloud-ksqlDBapp-settings-service-account-id](https://raw.githubusercontent.com/awalther28/kafka-tutorials-workshops/main/images/ksqlDBserviceAccount.jpg)
 
 2. Run ```ccloud kafka acl create --allow --service-account <service-account-ID> --operation READ --operation WRITE --operation CREATE --topic '*'```
 
