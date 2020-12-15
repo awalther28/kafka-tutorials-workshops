@@ -4,13 +4,13 @@ Code supporting meetup workshops based on [Kafka Tutorials](https://kafka-tutori
 
 ##  Provision a new ccloud-stack on Confluent Cloud
 
-This part assumes you have already set-up an account on [Confluent Cloud](https://confluent.cloud/) and you've installed the [Confluent Cloud CLI](https://docs.confluent.io/ccloud-cli/current/install.html). We're going to use the `ccloud-stack` utility to get everything set-up to work along with the workshop. 
+This part assumes you have already set-up an account on [Confluent Cloud](https://confluent.cloud/) and you've installed the [Confluent Cloud CLI](https://docs.confluent.io/ccloud-cli/current/install.html). We're going to use the `ccloud-stack` utility to get everything set-up to work along with the workshop. This script also requires 'jq'.  
 
 Run (note this will take up to 12 minutes!):
 ```
 git clone git@github.com:confluentinc/examples.git
 cd examples/ccloud/ccloud-stack
-./ccloud-stack.sh
+./ccloud_stack_create.sh
 # type 'y' for both questions
 ```
 Once completed, you need to allow the ksqlDB app's service account access to create, read, and write to all topics.
