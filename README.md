@@ -8,6 +8,7 @@ This part assumes you have already set-up an account on [Confluent Cloud](https:
 
 Run (note this will take up to 12 minutes!):
 ```
+# Clone https://github.com/confluentinc/examples
 git clone git@github.com:confluentinc/examples.git
 cd examples/ccloud/ccloud-stack
 ./ccloud_stack_create.sh
